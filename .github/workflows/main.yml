@@ -7,7 +7,7 @@ on:
     types: [assigned, opened, synchronize, reopened]
 
 jobs:
-  build:
+  build_linux:
     runs-on: ubuntu-18.04
     container: golang:1.13.1
     steps:
@@ -16,6 +16,15 @@ jobs:
       run: make test
     - name: Build
       run: make build
+  build_macOS-latest:
+    runs-on: macOS-latest
+    container: golang:1.13.1
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run Tests
+      run: make test
+    - name: Build
+        run: make build
   lint:
     runs-on: ubuntu-18.04
     container: golangci/golangci-lint:v1.19
