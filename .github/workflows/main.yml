@@ -23,12 +23,3 @@ jobs:
       - uses: actions/checkout@v1
       - name: Run Linters
         run: make lint
-  build_mac:
-    runs-on: macos-latest
-    container: golang:1.13.1
-    steps:
-      - uses: actions/checkout@v1
-      - name: Run Tests
-        run: make test
-      - name: Build
-        run: make build
